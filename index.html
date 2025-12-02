@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuhin Alam Bijoy - Data Science & Photography Portfolio</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Lightbox2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #800020;
+            --secondary-color: #A52A2A;
+            --accent-color: #D4AF37;
+            --dark-color: #2C2C2C;
+            --light-color: #FFFFFF;
+            --gray-color: #F5F5F5;
+            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            color: var(--dark-color);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(245, 245, 245, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(128, 0, 32, 0.1) 0%, rgba(165, 42, 42, 0.1) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+        }
+        
+        .typewriter {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            min-height: 60px;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating-img {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Section Styling */
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transition: transform 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-badge {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
+        }
+        
+        /* Projects Section */
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            border: none;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(128, 0, 32, 0.9));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        /* Photography Section - Updated for Lightbox */
+        .photo-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            color: white;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-overlay h5 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .photo-overlay p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Stats Counter */
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Achievements Section */
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .achievement-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            z-index: 2;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-control {
+            border: 2px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(128, 0, 32, 0.25);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 80px 0 20px;
+            position: relative;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Custom Button Styles */
+        .btn-custom {
+            background: var(--gradient);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-custom:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(128, 0, 32, 0.3);
+        }
+        
+        .btn-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-custom:hover::before {
+            left: 100%;
+        }
+        
+        .btn-outline-custom {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-custom:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Loading Animation */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Particle Animation */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+        
+        /* Lightbox Customization */
+        .lightbox .lb-image {
+            border-radius: 10px;
+        }
+        
+        .lightbox .lb-nav a.lb-next,
+        .lightbox .lb-nav a.lb-prev {
+            opacity: 1;
+        }
+        
+        .lightbox .lb-data .lb-caption {
+            font-size: 16px;
+            line-height: 1.4;
+            color: white;
+        }
+        
+        .lightbox .lb-data .lb-number {
+            color: white;
+        }
+        
+        .lightbox .lb-close {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') no-repeat center center;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .about-card, .contact-form {
+                padding: 20px;
+            }
+            
+            .photo-card img {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .photo-card img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Tuhin<span>Alam</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#photography">Photography</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div id="particles-js"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content animate__animated animate__fadeInLeft">
+                        <h1 class="hero-title">Tuhin Alam Bijoy</h1>
+                        <h2 class="hero-subtitle">Data Scientist & Photographer</h2>
+                        <div class="typewriter" id="typewriter"></div>
+                        <div class="mt-4">
+                            <a href="#projects" class="btn btn-custom me-3">View Projects</a>
+                            <a href="#photography" class="btn btn-outline-custom">See My Photos</a>
+                        </div>
+                        <div class="mt-5">
+                            <a href="#contact" class="btn btn-custom">
+                                <i class="fas fa-paper-plane me-2"></i>Contact Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center animate__animated animate__fadeInRight">
+                        <img src="images/1111.jpeg" alt="Tuhin Alam Bijoy" class="img-fluid rounded-circle floating-img" style="width: 350px; height: 350px; object-fit: cover; border: 5px solid white; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p class="text-muted">Data-Driven Decision Maker & Visual Storyteller</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-card">
+                        <h3 class="mb-4">My Journey</h3>
+                        <p class="mb-4">I'm a passionate data science enthusiast with a strong foundation in extracting insights from complex datasets. My skills include machine learning, statistical analysis, and data visualization, and I'm continuously improving through hands-on projects and learning.</p>
+                        <p class="mb-4">When I'm not analyzing data, I'm out capturing the world through my camera lens. Photography allows me to explore creativity and share unique perspectives.</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5 class="mb-3"><i class="fas fa-chart-line me-2 text-primary"></i>Data Science</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i>Machine Learning</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i>Data Analysis</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i>Statistical Modeling</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="mb-3"><i class="fas fa-camera me-2 text-primary"></i>Photography</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i>Portrait Photography</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i>Landscape Photography</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i>Photo Editing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="about-card">
+                        <h3 class="mb-4">My Skills</h3>
+                        <div class="mb-4">
+                            <h5>Data Science & Analytics</h5>
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">Pandas</span>
+                                <span class="skill-badge">NumPy</span>
+                                <span class="skill-badge">SQL</span>
+                                <span class="skill-badge">Machine Learning</span>
+                               
+                                <span class="skill-badge">Statistics</span>
+                                <span class="skill-badge">TensorFlow</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>Photography & Creative</h5>
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge">Photography</span>
+                                <span class="skill-badge">Photo Editing</span>
+                                <span class="skill-badge">Lightroom</span>
+                                <span class="skill-badge">Photoshop</span>
+                               
+                                
+                
+                            </div>
+                        </div>
+                        
+                        <div class="stats-counter mt-4">
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <h4 class="counter" data-count="5">0</h4>
+                                    <p>Years Experience</p>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="counter" data-count="500+">0</h4>
+                                    <p>Photos Taken</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Data Science Projects</h2>
+                <p class="text-muted">Transforming data into actionable insights</p>
+            </div>
+            
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-img position-relative">
+                            <img src="https://daxg39y63pxwu.cloudfront.net/images/blog/churn-models/Customer_Churn_Prediction_Models_in_Machine_Learning.png" alt="Customer Churn Prediction">
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#projectModal1">View Details</a>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4>Customer Churn Prediction</h4>
+                            <p class="text-muted">Built a machine learning model to predict customer churn with 92% accuracy, helping reduce churn by 15%.</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-secondary">Machine Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-img position-relative">
+                            <img src="images/images.jpeg" alt="Sales Forecasting">
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#projectModal2">View Details</a>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4>Sales Forecasting</h4>
+                            <p class="text-muted">Developed a time series forecasting model to predict product sales, improving inventory management.</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-secondary">Time Series</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-img position-relative">
+                            <img src="images/download.jpeg" alt="Sentiment Analysis">
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#projectModal3">View Details</a>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4>Sentiment Analysis</h4>
+                            <p class="text-muted">Created an NLP model to analyze customer reviews and classify sentiment with 89% accuracy.</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">NLP</span>
+                                <span class="badge bg-secondary">Deep Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Photography Section -->
+    <section id="photography" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Photography</h2>
+                <p class="text-muted">Capturing moments, telling stories through my lens</p>
+            </div>
+            
+            <div class="row" id="photoGallery">
+                <!-- Photos will be loaded dynamically -->
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3><span class="counter" data-count="5">0</span>+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h3><span class="counter" data-count="500">0</span>+</h3>
+                        <p>Photos Captured</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3><span class="counter" data-count="10">0</span>+</h3>
+                        <p>Awards Won</p>
+                    </div>
+                </div>
+                
+             
+            </div>
+        </div>
+    </section>
+    
+    <!-- Achievements Section -->
+    <section id="achievements" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Photography Achievements</h2>
+                <p class="text-muted">Awards and recognition for my photographic excellence</p>
+            </div>
+            
+            <div class="row">
+                <!-- Achievement 1 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="achievement-card">
+                        <div class="achievement-badge">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <img src="images/iubat.jpeg" alt="Achievement 1" class="img-fluid" style="height: 250px; width: 100%; object-fit: cover;">
+                        <div class="p-4">
+                            <h4>Hello Summer ’25 Photography Contest! Winner 🏆 </h4>
+                            <p class="text-muted">Selected among 1000+ entries </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">2025</span>
+                                <span class="text-accent">Nature Photography</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievement 2 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="achievement-card">
+                        <div class="achievement-badge">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <img src="images/vivo.jpeg" alt="Achievement 2" class="img-fluid" style="height: 250px; width: 100%; object-fit: cover;">
+                        <div class="p-4">
+                            <h4>Top Photographer</h4>
+                            <p class="text-muted">Vivo Photography cronical Photography Awards.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">2024</span>
+                                <span class="text-accent">Portrait</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievement 3 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="achievement-card">
+                        <div class="achievement-badge">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <img src="images/pr.jpeg" alt="Achievement 3" class="img-fluid" style="height: 250px; width: 100%; object-fit: cover;">
+                        <div class="p-4">
+                            <h4>Finalist</h4>
+                            <p class="text-muted">Best Photographer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">2025</span>
+                                <span class="text-accent">Portrait</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p class="text-muted">Let's connect and create something amazing together</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="stat-card h-100">
+                                <div class="stat-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h5>Location</h5>
+                                <p class="mb-0">Netrakona, Bangladesh</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="stat-card h-100">
+                                <div class="stat-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h5>Email</h5>
+                                <p class="mb-0">tuhinalambijoy@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="stat-card h-100">
+                                <div class="stat-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h5>Phone</h5>
+                                <p class="mb-0">+8801609832333</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="stat-card h-100">
+                                <div class="stat-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <h5>LinkedIn</h5>
+                                <p class="mb-0">Tuhin Alam Bijoy</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <h5 class="mb-3">Follow Me</h5>
+                        <div class="social-links">
+                            <a href="https://github.com/tuhinCr7"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/md-tuhin-alam-bijoy-0964402b3/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/TuhinAlamBijoy"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/tuhins_touch_/"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h4 class="mb-3">Tuhin Alam Bijoy</h4>
+                    <p class="mb-0">Data Scientist & Photographer</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">© 2025 Tuhin Alam Bijoy. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Project Modals -->
+    <div class="modal fade" id="projectModal1" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Customer Churn Prediction</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://daxg39y63pxwu.cloudfront.net/images/blog/churn-models/Customer_Churn_Prediction_Models_in_Machine_Learning.png" class="img-fluid mb-3" alt="Project 1">
+                    <p>This project involved building a machine learning model to predict customer churn for a telecommunications company. The model achieved 92% accuracy and helped reduce churn by 15%.</p>
+                    <h6>Technologies Used:</h6>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-2">Python</span>
+                        <span class="badge bg-primary me-2">Scikit-learn</span>
+                        <span class="badge bg-primary me-2">Pandas</span>
+                        <span class="badge bg-primary me-2">XGBoost</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="projectModal2" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sales Forecasting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/images.jpeg" class="img-fluid mb-3" alt="Project 2">
+                    <p>Developed a time series forecasting model to predict product sales for a retail company. The model improved inventory management and reduced stockouts by 25%.</p>
+                    <h6>Technologies Used:</h6>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-2">Python</span>
+                        <span class="badge bg-primary me-2">ARIMA</span>
+                        <span class="badge bg-primary me-2">Prophet</span>
+                        <span class="badge bg-primary me-2">Plotly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="projectModal3" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sentiment Analysis</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/download.jpeg" class="img-fluid mb-3" alt="Project 3">
+                    <p>Created an NLP model to analyze customer reviews and classify sentiment with 89% accuracy. The insights helped improve product features and customer satisfaction.</p>
+                    <h6>Technologies Used:</h6>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-2">Python</span>
+                        <span class="badge bg-primary me-2">NLTK</span>
+                        <span class="badge bg-primary me-2">TensorFlow</span>
+                        <span class="badge bg-primary me-2">BERT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    
+    <script>
+        // Wait for page to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loader after 1 second
+            setTimeout(function() {
+                document.getElementById('loader').style.display = 'none';
+            }, 1000);
+            
+            // Typewriter Effect
+            const typewriterElement = document.getElementById('typewriter');
+            const texts = [
+                "Transforming data into insights...",
+                "Capturing moments through lens...",
+                "Building intelligent solutions...",
+                "Creating visual stories..."
+            ];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function typeWriter() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    setTimeout(typeWriter, 500);
+                } else {
+                    setTimeout(typeWriter, isDeleting ? 50 : 100);
+                }
+            }
+            
+            typeWriter();
+            
+            // Particles.js Background
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#800020" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#800020",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    }
+                }
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Counter animation
+            function animateCounter() {
+                const counters = document.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    const increment = target / 200;
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = Math.ceil(current);
+                            setTimeout(updateCounter, 10);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                });
+            }
+            
+            // Initialize counters when section is in view
+            const aboutSection = document.getElementById('about');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (aboutSection) {
+                observer.observe(aboutSection);
+            }
+            
+            // Load photography gallery with lightbox
+            const photoGallery = document.getElementById('photoGallery');
+            const photos = [
+                { 
+                    src: 'images/01_Tuhin_01609832333_IUBAT.jpeg', 
+                    title: 'Smile', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'A beautiful smile captured in natural light'
+                },
+                { 
+                    src: 'images/beutifull.jpeg', 
+                    title: 'Beautiful Village', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Scenic view of a traditional village in Bangladesh'
+                },
+                { 
+                    src: 'images/cricker.jpg', 
+                    title: 'Cricket Emotion', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Emotional moment during a cricket match'
+                },
+                { 
+                    src: 'images/football.jpg', 
+                    title: 'Metropolis', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Urban landscape photography'
+                },
+                { 
+                    src: 'images/tuku.jpg', 
+                    title: 'Winter Morning', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Peaceful winter morning scene'
+                },
+                { 
+                    src: 'images/road.jpg', 
+                    title: 'Country Roads', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Rural roads winding through the countryside'
+                },
+                { 
+                    src: 'images/dog.jpg', 
+                    title: 'Cuteness Overloaded', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Adorable pet photography'
+                },
+                { 
+                    src: 'images/drop.jpg', 
+                    title: 'Morning Drop', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Macro photography of morning dew'
+                },
+                { 
+                    src: 'images/swither.jpeg', 
+                    title: 'Village Life', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Daily life in a Bangladeshi village'
+                },
+                { 
+                    src: 'images/fish.jpg', 
+                    title: 'Traditional Fishing', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Fishermen using traditional methods'
+                },
+                { 
+                    src: 'images/lily.jpeg', 
+                    title: 'National Flower', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Water Lily'
+                },
+                { 
+                    src: 'images/rain.jpeg', 
+                    title: 'November Rain', 
+                    desc: 'Netrakona, Bangladesh',
+                    alt: 'Rain'
+                },
+            ];
+            
+            // Create photo cards with lightbox
+            photos.forEach((photo, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6 mb-4';
+                
+                const photoCard = document.createElement('div');
+                photoCard.className = 'photo-card';
+                
+                const link = document.createElement('a');
+                link.href = photo.src;
+                link.setAttribute('data-lightbox', 'photography');
+                link.setAttribute('data-title', `<strong>${photo.title}</strong><br>${photo.desc}`);
+                link.setAttribute('data-alt', photo.alt);
+                
+                const img = document.createElement('img');
+                img.src = photo.src;
+                img.alt = photo.alt;
+                img.className = 'img-fluid';
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'photo-overlay';
+                overlay.innerHTML = `
+                    <h5>${photo.title}</h5>
+                    <p>${photo.desc}</p>
+                    <small><i class="fas fa-expand-alt me-1"></i>Click to view full image</small>
+                `;
+                
+                link.appendChild(img);
+                photoCard.appendChild(link);
+                photoCard.appendChild(overlay);
+                col.appendChild(photoCard);
+                photoGallery.appendChild(col);
+            });
+            
+            // Initialize Lightbox
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'showImageNumberLabel': true,
+                'positionFromTop': 50,
+                'fadeDuration': 300,
+                'imageFadeDuration': 300,
+                'disableScrolling': true,
+                'albumLabel': 'Image %1 of %2'
+            });
+            
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+            
+            // Add animation on scroll
+            const animatedElements = document.querySelectorAll('.about-card, .project-card, .stat-card, .achievement-card, .photo-card');
+            
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                scrollObserver.observe(element);
+            });
+            
+            // Theme toggle functionality
+            const themeToggle = document.createElement('button');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            themeToggle.className = 'btn btn-custom position-fixed';
+            themeToggle.style.bottom = '30px';
+            themeToggle.style.right = '90px';
+            themeToggle.style.zIndex = '1000';
+            themeToggle.title = 'Toggle Dark Mode';
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    themeToggle.style.background = 'linear-gradient(45deg, #333, #555)';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                    themeToggle.style.background = 'linear-gradient(45deg, var(--primary-color), var(--secondary-color))';
+                }
+            });
+            
+            document.body.appendChild(themeToggle);
+            
+            // Dark mode styles
+            const darkModeStyles = document.createElement('style');
+            darkModeStyles.textContent = `
+                .dark-mode {
+                    background-color: #121212;
+                    color: #ffffff;
+                }
+                
+                .dark-mode .bg-light {
+                    background-color: #1e1e1e !important;
+                }
+                
+                .dark-mode .about-card,
+                .dark-mode .project-card,
+                .dark-mode .stat-card,
+                .dark-mode .achievement-card,
+                .dark-mode .contact-form,
+                .dark-mode .photo-card {
+                    background-color: #2d2d2d;
+                    color: #ffffff;
+                }
+                
+                .dark-mode .navbar {
+                    background-color: #1e1e1e;
+                }
+                
+                .dark-mode .nav-link {
+                    color: #ffffff;
+                }
+                
+                .dark-mode .text-muted {
+                    color: #b0b0b0 !important;
+                }
+                
+                .dark-mode .form-control {
+                    background-color: #2d2d2d;
+                    border-color: #444;
+                    color: #ffffff;
+                }
+                
+                .dark-mode .form-control:focus {
+                    background-color: #2d2d2d;
+                    border-color: var(--primary-color);
+                    color: #ffffff;
+                }
+            `;
+            document.head.appendChild(darkModeStyles);
+            
+            // Add keyboard navigation for lightbox
+            document.addEventListener('keydown', function(e) {
+                // Check if lightbox is open
+                if (document.querySelector('.lightboxOverlay')) {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            // Previous image
+                            const prevBtn = document.querySelector('.lb-prev');
+                            if (prevBtn) prevBtn.click();
+                            break;
+                        case 'ArrowRight':
+                            // Next image
+                            const nextBtn = document.querySelector('.lb-next');
+                            if (nextBtn) nextBtn.click();
+                            break;
+                        case 'Escape':
+                            // Close lightbox
+                            const closeBtn = document.querySelector('.lb-close');
+                            if (closeBtn) closeBtn.click();
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
