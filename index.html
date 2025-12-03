@@ -329,6 +329,38 @@
             opacity: 0.8;
         }
         
+        /* Show More Button Animation */
+        #showMoreBtn, #showLessBtn {
+            transition: all 0.3s ease;
+            padding: 12px 40px;
+            font-weight: 600;
+        }
+        
+        #showMoreBtn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(128, 0, 32, 0.3);
+        }
+        
+        #showLessBtn:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Animation for newly loaded photos */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
         /* Stats Counter */
         .stat-card {
             background: white;
@@ -615,6 +647,11 @@
             .photo-card img {
                 height: 250px;
             }
+            
+            #showMoreBtn, #showLessBtn {
+                padding: 10px 30px;
+                font-size: 0.9rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -736,7 +773,6 @@
                                 <span class="skill-badge">NumPy</span>
                                 <span class="skill-badge">SQL</span>
                                 <span class="skill-badge">Machine Learning</span>
-                               
                                 <span class="skill-badge">Statistics</span>
                                 <span class="skill-badge">TensorFlow</span>
                             </div>
@@ -749,9 +785,6 @@
                                 <span class="skill-badge">Photo Editing</span>
                                 <span class="skill-badge">Lightroom</span>
                                 <span class="skill-badge">Photoshop</span>
-                               
-                                
-                
                             </div>
                         </div>
                         
@@ -854,7 +887,19 @@
             </div>
             
             <div class="row" id="photoGallery">
-                <!-- Photos will be loaded dynamically -->
+                <!-- Photos will be loaded dynamically - First 6 will be shown initially -->
+            </div>
+            
+            <!-- Show More Button Container -->
+            <div class="row mt-4" id="showMoreContainer" style="display: none;">
+                <div class="col-12 text-center">
+                    <button id="showMoreBtn" class="btn btn-custom">
+                        <i class="fas fa-plus-circle me-2"></i>Show More Photos
+                    </button>
+                    <button id="showLessBtn" class="btn btn-outline-custom ms-3" style="display: none;">
+                        <i class="fas fa-minus-circle me-2"></i>Show Less
+                    </button>
+                </div>
             </div>
             
             <div class="row mt-5">
@@ -888,7 +933,15 @@
                     </div>
                 </div>
                 
-             
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-camera-retro"></i>
+                        </div>
+                        <h3><span class="counter" data-count="6">0</span>+</h3>
+                        <p>Exhibitions</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -910,8 +963,8 @@
                         </div>
                         <img src="images/iubat.jpeg" alt="Achievement 1" class="img-fluid" style="height: 250px; width: 100%; object-fit: cover;">
                         <div class="p-4">
-                            <h4>Hello Summer ’25 Photography Contest! Winner 🏆 </h4>
-                            <p class="text-muted">Selected among 1000+ entries </p>
+                            <h4>Hello Summer '25 Photography Contest! Winner 🏆</h4>
+                            <p class="text-muted">Selected among 1000+ entries</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="badge bg-primary">2025</span>
                                 <span class="text-accent">Nature Photography</span>
@@ -1044,6 +1097,7 @@
             </div>
         </div>
     </section>
+    
     
     <!-- Footer -->
     <footer>
@@ -1296,6 +1350,10 @@
             
             // Load photography gallery with lightbox
             const photoGallery = document.getElementById('photoGallery');
+            const showMoreContainer = document.getElementById('showMoreContainer');
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            const showLessBtn = document.getElementById('showLessBtn');
+            
             const photos = [
                 { 
                     src: 'images/01_Tuhin_01609832333_IUBAT.jpeg', 
@@ -1371,10 +1429,10 @@
                 },
             ];
             
-            // Create photo cards with lightbox
-            photos.forEach((photo, index) => {
+            // Function to create photo card
+            function createPhotoCard(photo, index) {
                 const col = document.createElement('div');
-                col.className = 'col-lg-4 col-md-6 mb-4';
+                col.className = 'col-lg-4 col-md-6 mb-4 photo-item';
                 
                 const photoCard = document.createElement('div');
                 photoCard.className = 'photo-card';
@@ -1402,7 +1460,73 @@
                 photoCard.appendChild(link);
                 photoCard.appendChild(overlay);
                 col.appendChild(photoCard);
-                photoGallery.appendChild(col);
+                
+                return col;
+            }
+            
+            // Function to show/hide photos
+            function loadPhotos(limit = 6) {
+                // Clear existing photos
+                photoGallery.innerHTML = '';
+                
+                // Show first 'limit' photos initially
+                photos.slice(0, limit).forEach((photo, index) => {
+                    const photoCard = createPhotoCard(photo, index);
+                    photoGallery.appendChild(photoCard);
+                });
+                
+                // Show "Show More" button if there are more photos
+                if (photos.length > limit) {
+                    showMoreContainer.style.display = 'block';
+                    showMoreBtn.style.display = 'inline-block';
+                    showLessBtn.style.display = 'none';
+                } else {
+                    showMoreContainer.style.display = 'none';
+                }
+            }
+            
+            // Initial load - show only 6 photos
+            loadPhotos(6);
+            
+            // Show More button functionality
+            showMoreBtn.addEventListener('click', function() {
+                // Show all photos
+                photoGallery.innerHTML = '';
+                photos.forEach((photo, index) => {
+                    const photoCard = createPhotoCard(photo, index);
+                    photoGallery.appendChild(photoCard);
+                });
+                
+                // Hide "Show More" button, show "Show Less" button
+                showMoreBtn.style.display = 'none';
+                showLessBtn.style.display = 'inline-block';
+                
+                // Animate the newly shown photos
+                const hiddenPhotos = document.querySelectorAll('.photo-item:nth-child(n+7)');
+                hiddenPhotos.forEach((photo, index) => {
+                    setTimeout(() => {
+                        photo.classList.add('animate__animated', 'animate__fadeInUp');
+                    }, index * 100);
+                });
+                
+                // Scroll to the newly shown photos
+                setTimeout(() => {
+                    document.querySelector('.photo-item:nth-child(7)').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 500);
+            });
+            
+            // Show Less button functionality
+            showLessBtn.addEventListener('click', function() {
+                // Show only first 6 photos
+                loadPhotos(6);
+                
+                // Scroll back to photography section
+                document.getElementById('photography').scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
             
             // Initialize Lightbox
@@ -1533,6 +1657,15 @@
                 }
             });
         });
+        // Add keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'h') window.location.href = '#home';
+    if (e.key === 'p') window.location.href = '#photography';
+    if (e.key === 'c') window.location.href = '#contact';
+    if (e.key === 'a') window.location.href = '#achievements';
+});
+
+
     </script>
 </body>
 </html>
